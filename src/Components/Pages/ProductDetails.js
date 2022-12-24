@@ -9,13 +9,13 @@ import ImageLoader from '../Utils/ImageLoader';
 
 const ProductDetails = () => {
       console.log("pd called");
-      let { state, addtocart, increase, decrease, remove, clearcart } = AppData();
+      let { state, addtocart } = AppData();
       let { headphones, speakers, earphones, grand_total } = state;
       console.log("pd state cart", state.cart);
 
       let [quantity, setquantity] = useState(1)
 
-      let [productname, setPord] = useState([])
+      let productname = []
 
       let { slug } = useParams()
       console.log("slug:", slug);
@@ -34,16 +34,14 @@ const ProductDetails = () => {
       console.log("PDN before", productname);
       if (category === "headphones") {
             // setPord(headphones)
-            // setPord(headphones)
             productname = headphones
             console.log("productname name inide:", productname);
 
       } else if (category === "earphones") {
-            // setPord(earphones);
+            // setPord(earphones)
             productname = earphones
             console.log("productname inside:", productname);
       } else if (category === "speakers") {
-
             // setPord(speakers)
             productname = speakers
 
@@ -55,20 +53,17 @@ const ProductDetails = () => {
 
       console.log("gt", grand_total);
 
-      
-      const handDEC = (id) => {
-            setquantity((prev) => prev - 1);
 
-      }
-      const handINC = (id) => {
-            setquantity((prev) => prev + 1)
+      const handDEC = () => setquantity((prev) => prev - 1);
 
-      }
+      const handINC = () => setquantity((prev) => prev + 1);
+
+
 
 
       return (
             <div className='selected_item' key={selected_Item.id}>
-                  <ImageLoader sml={`.${selected_Item.image.mobile}`} mid={`.${selected_Item.image.teblet}`} lrg={`.${selected_Item.image.desktop}`} alt={`${selected_Item.name}`} />
+                  <ImageLoader sml={`.${selected_Item.image.mobile}`} mid={`.${selected_Item.image.tablet}`} lrg={`.${selected_Item.image.desktop}`} alt={`${selected_Item.name}`} />
                   {selected_Item.new ? <h4 className='over_line'>new product </h4> : <></>}
                   <h2>{selected_Item.name}</h2>
                   <p className='description'>{selected_Item.description}</p>

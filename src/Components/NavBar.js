@@ -9,7 +9,7 @@ import Buttons from './Utils/Buttons'
 import CatagoryThumb from './CatagoryThumb'
 import Logo from './Utils/Logo'
 import { AppData } from './Contexts/DataContext'
-import Cart from './Utils/Cart'
+
 
 const NavBar = ({ width, setShowcart }) => {
 
@@ -20,10 +20,6 @@ const NavBar = ({ width, setShowcart }) => {
 
       let [show, setShow] = useState(false);
       let navBtnref = useRef()
-      let quantity = productquantity
-
-
-
       useEffect(() => {
             const outside = (e) => {
                   if (!navBtnref.current.contains(e.target)) {
@@ -34,6 +30,23 @@ const NavBar = ({ width, setShowcart }) => {
             return () => document.body.removeEventListener('click', outside)
       }, [])
       console.log("currentvalue in nav setShow", show);
+
+
+
+      let cartBtnref = useRef()
+      useEffect(() => {
+            const outside = (e) => {
+                  if (!cartBtnref.current.contains(e.target)) {
+                        setShowcart(false)
+                  }
+            }
+            document.body.addEventListener('click', outside)
+            return () => document.body.removeEventListener('click', outside)
+      }, [setShowcart])
+
+
+
+      let quantity = productquantity
 
 
       return (
@@ -47,7 +60,7 @@ const NavBar = ({ width, setShowcart }) => {
                                           </IconContext.Provider>
                                     </div>
                                     <Logo />
-                                    <div className='cart_icon_container'>
+                                    <div ref={cartBtnref} className='cart_icon_container'>
                                           <GrCart className='nav_icon' onClick={() => {
                                                 if (cart.length === 0) {
                                                       setShowcart(false)
@@ -79,7 +92,7 @@ const NavBar = ({ width, setShowcart }) => {
                                     <Buttons className="nav_btn" name={"Speakers"} button_type={"nav_btn"} where={"/speakers"} />
                                     <Buttons className="nav_btn" name={"Earphones"} button_type={"nav_btn"} where={"/earphones"} />
                               </div>
-                              <div className='cart_icon_container'>
+                              <div ref={cartBtnref} className='cart_icon_container'>
                                     <GrCart className='nav_icon' onClick={() => {
                                           if (cart.length === 0) {
                                                 setShowcart(false)

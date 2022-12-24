@@ -3,14 +3,14 @@ import Product from "./Components/Pages/Product";
 import ProductDetails from './Components/Pages/ProductDetails';
 import NavBar from "./Components/NavBar";
 import Footer from "./Components/Footer";
-import BestGears from './Components/BestGears';
+import BestGears from './Components/Utils/BestGears';
 import CatagoryThumb from './Components/CatagoryThumb';
 import { useEffect, useState } from "react";
 import Home from "./Components/Pages/Home";
-import { AppData, ContextWrapper } from "./Components/Contexts/DataContext";
+import { AppData } from "./Components/Contexts/DataContext";
 import ScrollToTop from "./Components/Utils/ScrollToTop";
 import Cart from "./Components/Utils/Cart";
-
+import Checkout from "./Components/Pages/Checkout";
 function App() {
   const [loading, setloading] = useState(false)
   let [showcart, setShowcart] = useState(false)
@@ -51,6 +51,7 @@ function App() {
           <Route path="speakers" element={<Product />} />
           <Route path="speakers/:slug" element={<ProductDetails />} />
 
+          <Route path="checkout" element={<Checkout />} />
         </Routes>
         <CatagoryThumb />
         <BestGears />

@@ -1,5 +1,5 @@
 import React from 'react';
-import ImageLoader from './Utils/ImageLoader';
+import ImageLoader from './ImageLoader';
 
 const BestGears = () => {
 

@@ -52,15 +52,45 @@ export const ContextWrapper = ({ children }) => {
                 }
 
             }
-            case "CART_INC":
-                return state;
-            case "CART_DEC":
-                return state;
+            case "CART_INC": {
+                console.log("----------------------------Increament func------------------------------");
+                console.log("cart preview", state.cart);
+                console.log("add req for item", action.payload);
+                let item = action.payload
+                const existing = state.cart.find((obj) => obj.item.slug === item.slug)
+                console.log("exiting retutn an object after find()----------------", existing);
+                const newitem = state.cart.map((cartObj) =>
+                    cartObj.item.slug === item.slug ? { ...existing, quantity: existing.quantity + 1 } : cartObj)
+                console.log("toatly new --- cart --- is:--->", newitem);
+                let cart = newitem
+                return { ...state, cart };
+
+            }
+            case "CART_DEC": {
+                console.log("----------------------------DECREASE------------------------------");
+                console.log("cart preview", state.cart);
+                console.log("remove req for item", action.payload);
+                let item = action.payload
+                const existing = state.cart.find((obj) => obj.item.slug === item.slug)
+                console.log("exiting retutn an object after find()----------------", existing);
+                if (existing.quantity === 1) {
+                    let cart = state.cart.filter((iot) => iot.item.slug !== existing.item.slug)
+                    console.log("let cart after setting==================", cart);
+                    return { ...state, cart }
+                } else {
+                    const newitem = state.cart.map((cartObj) =>
+                        cartObj.item.slug === item.slug ? { ...existing, quantity: existing.quantity - 1 } : cartObj)
+                    console.log("toatly new --- cart --- is:--->", newitem);
+                    let cart = newitem
+                    return { ...state, cart };
+                }
+
+            }
             case "CART_REMOVE": {
                 console.log("----------------------------Remove------------------------------");
                 console.log("cart preview", state.cart);
-                console.log("recieved item", action.payload.item);
-                let { item } = action.payload
+                console.log("remove req for item", action.payload);
+                let item = action.payload
 
                 const existing = state.cart.find((obj) => obj.item.slug === item.slug)
                 console.log("exiting----------------", existing);
@@ -75,7 +105,9 @@ export const ContextWrapper = ({ children }) => {
             }
 
             case "CART_CLEAR":
-                return state;
+                let { cart } = state
+                cart = []
+                return { ...state, cart };
             case "GRAND_TOTAL":
                 // console.log("length", state.cart.length);                    
                 let { grand_total, quantity } = state.cart.reduce((accum,
@@ -116,8 +148,8 @@ export const ContextWrapper = ({ children }) => {
 
     const addtocart = (item, quantity) => { dispatch({ type: "ADD_TO_CART", payload: { item: item, quantity: quantity } }) }
     const remove = (item) => { dispatch({ type: "CART_REMOVE", payload: item }) }
-    const increase = (id) => { dispatch({ type: "CART_INC", payload: id }) }
-    const decrease = (id) => { dispatch({ type: "CART_DEC", payload: id }) }
+    const increase = (item) => { dispatch({ type: "CART_INC", payload: item }) }
+    const decrease = (item) => { dispatch({ type: "CART_DEC", payload: item }) }
     const clearcart = () => { dispatch({ type: "CART_CLEAR" }) }
 
 

@@ -4,9 +4,9 @@ import ImageLoader from './ImageLoader';
 const BestGears = () => {
 
     let imgs = [
-        "./assets/best-gare/image-best-gear-375.jpg",
-        "./assets/best-gare/image-best-gear-768.jpg",
-        "./assets/best-gare/image-best-gear-1200.jpg"
+        "../assets/best-gare/image-best-gear-375.jpg",
+        "../assets/best-gare/image-best-gear-768.jpg",
+        "../assets/best-gare/image-best-gear-1200.jpg"
     ]
     return (
         <div className='best_gears_container'>

@@ -1,9 +1,9 @@
 import React from 'react'
-import Buttons from './Utils/Buttons'
+import Buttons from './Buttons'
 
 import { GrFacebook, GrInstagram, GrTwitter } from 'react-icons/gr';
 import { IconContext } from 'react-icons';
-import Logo from './Utils/Logo';
+import Logo from './Logo';
 
 const Footer = () => {
     return (

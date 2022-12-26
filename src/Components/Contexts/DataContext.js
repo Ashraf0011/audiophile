@@ -1,14 +1,11 @@
 import axios from "axios";
-import React, { createContext, useContext, useEffect, useReducer, useState } from "react";
-
-
+import React, { createContext, useContext, useEffect, useReducer } from "react";
 
 const AppContext = createContext();
 export const AppData = () => useContext(AppContext);
 
-
 export const ContextWrapper = ({ children }) => {
-    const [allData, setData] = useState(null)
+
     let initialState = {
         earphones: [],
         headphones: [],
@@ -16,6 +13,7 @@ export const ContextWrapper = ({ children }) => {
         loading: false,
         cart: [],
         total_quantity: 0,
+        grand_total: 0
     }
 
     const reducer = (state, action) => {
@@ -108,28 +106,35 @@ export const ContextWrapper = ({ children }) => {
                 let { cart } = state
                 cart = []
                 return { ...state, cart };
+
             case "GRAND_TOTAL":
                 // console.log("length", state.cart.length);                    
-                let { grand_total, quantity } = state.cart.reduce((accum,
-                    item) => {
-                    // Get the quantity of the current item                     
-                    let quantity = state.cart.filter((obj) => obj.slug === item.slug).length;
+                {
+                    let { cart, grand_total } = state
+                    grand_total = cart.reduce((a, i) => a + i.item.price * i.quantity, 0);
+                    console.log("item price", grand_total);
+                    return { ...state, grand_total }
+                }
+            // let { grand_total, quantity } = state.cart.reduce((accum,
+            //     item) => {
+            //     // Get the quantity of the current item                     
+            //     let quantity = state.cart.filter((obj) => obj.slug === item.slug).length;
 
-                    // must be to pure function                                 
-                    // Multiply the price of the current item by its quantity    and add it to the   accumulator                                                                 
-                    function calcAccum(price, quantity) {
-                        let item_total = price * quantity;
-                        return {
-                            grand_total: item_total,
-                            quantity: quantity
-                        }
-                    }
-                    let res = calcAccum(item.price, quantity);
-                    accum = res
-                    return accum;
-                }, { grand_total: 0, quantity: 0 });
+            //     // must be to pure function                                 
+            //     // Multiply the price of the current item by its quantity    and add it to the   accumulator                                                                 
+            //     function calcAccum(price, quantity) {
+            //         let item_total = price * quantity;
+            //         return {
+            //             grand_total: item_total,
+            //             quantity: quantity
+            //         }
+            //     }
+            //     let res = calcAccum(item.price, quantity);
+            //     accum = res
+            //     return accum;
+            // }, { grand_total: 0, quantity: 0 });
 
-                return { ...state, grand_total, quantity };
+            // return { ...state, grand_total, quantity };
 
 
             case "LOADING":
@@ -141,10 +146,30 @@ export const ContextWrapper = ({ children }) => {
     }
 
 
+    const timing = () => {
+        return new Date().getTime();
+    }
 
 
+    let [state, dispatch] = useReducer(reducer, initialState, () => {
+        let localState = localStorage.getItem("STATE");
+        console.log("local state", localState);
 
-    let [state, dispatch] = useReducer(reducer, initialState);
+        const timelimit = 60 //munits
+        let localTime = localStorage.getItem("AEW_TIME");
+        let now = timing()
+        console.log("localTime", localTime);
+        if (localTime === null && localState !== null) {
+            localStorage.setItem("AEW_TIME", JSON.stringify(now))
+        } else {
+            if (now - localTime > timelimit * 60 * 1000) {
+                localStorage.clear();
+                localStorage.setItem("AEW_TIME", JSON.stringify(now))
+            }
+        }
+
+        return localState ? JSON.parse(localState) : initialState
+    });
 
     const addtocart = (item, quantity) => { dispatch({ type: "ADD_TO_CART", payload: { item: item, quantity: quantity } }) }
     const remove = (item) => { dispatch({ type: "CART_REMOVE", payload: item }) }
@@ -154,7 +179,7 @@ export const ContextWrapper = ({ children }) => {
 
 
 
-    const url = "http://localhost:5555/api/allproducts";
+    const url = "http://10.0.0.6:5555/api/allproducts";
 
 
     /* 
@@ -184,7 +209,7 @@ export const ContextWrapper = ({ children }) => {
             axios.get(url).then(
                 (response) => {
                     console.log("allData:::", response.data);
-                    setData(response.data)
+                    // setData(response.data)
                     dispatch({ type: "FIND_CATEGORY", payload: response.data })
                     dispatch({ type: "LOADING", payload: false })
                 }
@@ -194,10 +219,17 @@ export const ContextWrapper = ({ children }) => {
         getData()
     }, []);
 
-    // useEffect(() => {
-    //     dispatch({ type: "GRAND_TOTAL", payload: state.cart })
-    // }, [state.cart])
+    useEffect(() => {
+        dispatch({ type: "GRAND_TOTAL", payload: state.cart })
+    }, [state.cart])
 
+    useEffect(() => {
+        localStorage.setItem("STATE", JSON.stringify(state))
+    }, [state])
+
+    // useEffect(() => {
+    //     localStorage.setItem("AEW_TIME", JSON.stringify(timing()))
+    // }, [])
 
 
 

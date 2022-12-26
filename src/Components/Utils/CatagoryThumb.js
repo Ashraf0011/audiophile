@@ -1,5 +1,5 @@
 import React from 'react'
-import Buttons from './Utils/Buttons';
+import Buttons from './Buttons';
 
 
 

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom'
 import { useLocation } from 'react-router-dom';
 import { AppData } from '../Contexts/DataContext';
 import Buttons from '../Utils/Buttons';
@@ -10,15 +9,9 @@ import ImageLoader from '../Utils/ImageLoader';
 const ProductDetails = () => {
       console.log("pd called");
       let { state, addtocart } = AppData();
-      let { headphones, speakers, earphones, grand_total } = state;
-      console.log("pd state cart", state.cart);
+      let { headphones, speakers, earphones } = state;
 
       let [quantity, setquantity] = useState(1)
-
-      let productname = []
-
-      let { slug } = useParams()
-      console.log("slug:", slug);
       const location = useLocation()
       let path = location.pathname
       console.log("path", path);
@@ -31,35 +24,25 @@ const ProductDetails = () => {
       let slug_val = clicked_on_path[2]
       console.log("val_slug", slug_val);
 
+      let productname = []
       console.log("PDN before", productname);
       if (category === "headphones") {
-            // setPord(headphones)
             productname = headphones
             console.log("productname name inide:", productname);
-
       } else if (category === "earphones") {
-            // setPord(earphones)
             productname = earphones
             console.log("productname inside:", productname);
       } else if (category === "speakers") {
-            // setPord(speakers)
             productname = speakers
-
             console.log("productname inside:", productname)
       }
 
       let selected_Item = productname.filter((it) => it.slug === slug_val ? it : null)[0]
       console.log("Selected Item showing from", selected_Item);
 
-      console.log("gt", grand_total);
-
-
       const handDEC = () => setquantity((prev) => prev - 1);
 
       const handINC = () => setquantity((prev) => prev + 1);
-
-
-
 
       return (
             <div className='selected_item' key={selected_Item.id}>

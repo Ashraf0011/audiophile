@@ -44,7 +44,7 @@ const Product = () => {
     console.log("correnty loading?", loading);
     return (
         loading === true ? <h3>please wait loading</h3> :
-            (<div key={`${val}`} className='product_list' >
+            (<div className='product_list' >
                 {/* <h4> {productname ? productname[0].category : loading} </h4> */}
                 <h4>{val} </h4>
                 < div className='product_collection'  >

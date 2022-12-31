@@ -1,16 +1,20 @@
+
 import axios from "axios";
 import React, { createContext, useContext, useEffect, useReducer } from "react";
+
 
 const AppContext = createContext();
 export const AppData = () => useContext(AppContext);
 
 export const ContextWrapper = ({ children }) => {
+    console.log("context-----------------------------------");
 
     let initialState = {
+        data: [],
         earphones: [],
         headphones: [],
         speakers: [],
-        loading: false,
+        loading: true,
         cart: [],
         total_quantity: 0,
         grand_total: 0
@@ -18,7 +22,12 @@ export const ContextWrapper = ({ children }) => {
 
     const reducer = (state, action) => {
         switch (action.type) {
+
+            case "SETDATA": {
+                return { ...state, data: action.payload }
+            }
             case "FIND_CATEGORY": {
+
                 let headphones = action.payload.filter((item) => item.category === "headphones");
                 console.log("reduced to headphones:", headphones);
                 let earphones = action.payload.filter((item) => item.category === "earphones")
@@ -101,20 +110,18 @@ export const ContextWrapper = ({ children }) => {
                     throw new Error("can not perfom this action:", action.type)
                 }
             }
-
             case "CART_CLEAR":
                 let { cart } = state
                 cart = []
                 return { ...state, cart };
 
-            case "GRAND_TOTAL":
+            case "GRAND_TOTAL": {
                 // console.log("length", state.cart.length);                    
-                {
-                    let { cart, grand_total } = state
-                    grand_total = cart.reduce((a, i) => a + i.item.price * i.quantity, 0);
-                    console.log("item price", grand_total);
-                    return { ...state, grand_total }
-                }
+                let { cart, grand_total } = state
+                grand_total = cart.reduce((a, i) => a + i.item.price * i.quantity, 0);
+                console.log("item price", grand_total);
+                return { ...state, grand_total }
+            }
             // let { grand_total, quantity } = state.cart.reduce((accum,
             //     item) => {
             //     // Get the quantity of the current item                     
@@ -137,8 +144,11 @@ export const ContextWrapper = ({ children }) => {
             // return { ...state, grand_total, quantity };
 
 
-            case "LOADING":
-                return { ...state, lodaing: action.payload }
+            case "LOADING": {
+                let loading = action.payload
+                console.log("llllllllllllllllllllllllllllll", loading);
+                return { ...state, loading: loading }
+            }
 
             default:
                 throw new Error(`${action.type} is not allowed!!`);
@@ -146,30 +156,28 @@ export const ContextWrapper = ({ children }) => {
     }
 
 
-    const timing = () => {
-        return new Date().getTime();
-    }
+    /* 
+      ┌────────────────────────────────────────────────────────────────────────────┐
+      │     Inside lical storage we will store server response.                    │
+      ├────────────────────────────────────────────────────────────────────────────┤
+      │     use dispatcher to re calculate as new value                            │
+      │                                                                            │
+      └────────────────────────────────────────────────────────────────────────────┘
+     */
 
-
+    let locSt = localStorage.getItem("A_E_W_S")
     let [state, dispatch] = useReducer(reducer, initialState, () => {
-        let localState = localStorage.getItem("STATE");
-        console.log("local state", localState);
-
-        const timelimit = 60 //munits
-        let localTime = localStorage.getItem("AEW_TIME");
-        let now = timing()
-        console.log("localTime", localTime);
-        if (localTime === null && localState !== null) {
-            localStorage.setItem("AEW_TIME", JSON.stringify(now))
-        } else {
-            if (now - localTime > timelimit * 60 * 1000) {
-                localStorage.clear();
-                localStorage.setItem("AEW_TIME", JSON.stringify(now))
-            }
-        }
-
-        return localState ? JSON.parse(localState) : initialState
+        return locSt ? JSON.parse(locSt) : initialState
     });
+
+
+    /* 
+      ┌─────────────────────────────────────────────────────────────────────────┐
+      │     function declarations for                                           │
+      ├─────────────────────────────────────────────────────────────────────────┤
+      │     dispatchers                                                         │
+      └─────────────────────────────────────────────────────────────────────────┘
+     */
 
     const addtocart = (item, quantity) => { dispatch({ type: "ADD_TO_CART", payload: { item: item, quantity: quantity } }) }
     const remove = (item) => { dispatch({ type: "CART_REMOVE", payload: item }) }
@@ -178,8 +186,8 @@ export const ContextWrapper = ({ children }) => {
     const clearcart = () => { dispatch({ type: "CART_CLEAR" }) }
 
 
-
-    const url = "http://10.0.0.6:5555/api/allproducts";
+    // const url = "http://10.0.0.6:5555/api/allproducts";
+    const url = "https://audio-server-amber.vercel.app/api/allproducts"
 
 
     /* 
@@ -202,39 +210,37 @@ export const ContextWrapper = ({ children }) => {
 
 
     useEffect(() => {
-
         const getData = () => {
-            console.log("context called");
+            console.log("context------------------------------------------ called");
             dispatch({ type: "LOADING", payload: true })
             axios.get(url).then(
                 (response) => {
                     console.log("allData:::", response.data);
-                    // setData(response.data)
-                    dispatch({ type: "FIND_CATEGORY", payload: response.data })
-                    dispatch({ type: "LOADING", payload: false })
+
+
+                    dispatch({ type: "SETDATA", payload: response.data });
+                    dispatch({ type: "FIND_CATEGORY", payload: response.data });
+                    if (response.status === 200) {
+                        console.log("----------------------", response.status);
+
+                        dispatch({ type: "LOADING", payload: false });
+                    }
+
                 }
             )
                 .catch((e) => { console.log("axiosError::", e) })
         }
         getData()
-    }, []);
+    }, [])
 
     useEffect(() => {
         dispatch({ type: "GRAND_TOTAL", payload: state.cart })
     }, [state.cart])
 
-    useEffect(() => {
-        localStorage.setItem("STATE", JSON.stringify(state))
-    }, [state])
-
-    // useEffect(() => {
-    //     localStorage.setItem("AEW_TIME", JSON.stringify(timing()))
-    // }, [])
-
 
 
     return (
-        <AppContext.Provider value={{ state, addtocart, increase, decrease, remove, clearcart }}>
+        <AppContext.Provider value={{ state, addtocart, increase, decrease, remove, clearcart, }}>
             {children}
         </AppContext.Provider>
     )

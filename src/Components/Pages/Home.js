@@ -1,13 +1,18 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
-
+import React from 'react';
+import CatagoryThumb from '../Utils/CatagoryThumb';
+import { Outlet } from 'react-router-dom';
+import { TopBanner } from '../Utils/TopBanner';
+import { CuirculedBanner } from '../Utils/CuirculedBanner';
 
 const Home = () => {
 
       return (
             <>
-                  <h3>all 3  banners in here later</h3>
+                  <TopBanner />
+                  <CatagoryThumb />
+                  <CuirculedBanner />
                   <Outlet />
+
             </>
       )
 }

@@ -1,50 +1,52 @@
-.increment{
-    width: 120px;
-    height: 42px;
+.increment {
+    width: 8rem;
+    height: 2.9rem;
     background-color: var(--white-L);
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    align-items:center;
+    align-items: center;
     color: var(--black);
 
-    .incrementer{
+    .incrementer {
         background-color: var(--white-L);
         color: var(--black);
         width: 18px;
         height: 16px;
-            margin-bottom: 10px;
+        margin-bottom: 10px;
 
     }
-        .inc_btn:hover{
-            color: var(--orange-L);
-            cursor: pointer;
-        }
+
+    .inc_btn:hover {
+        color: var(--orange-L);
+        cursor: pointer;
+    }
 
 }
 
-.btn_clear_cart{
+.btn_clear_cart {
     cursor: pointer;
     text-decoration: underline;
-    text-underline-offset:4px;
-    &:hover{
+    text-underline-offset: 4px;
+
+    &:hover {
         color: var(--orange-L);
     }
 }
 
-.cart_page{
+.cart_page {
     width: 100vw;
     height: 100vh;
     position: absolute;
     top: 0;
     left: 0;
     z-index: 4;
-    overflow-anchor:auto;
+    overflow-anchor: auto;
     background-color: var(--black-L);
 
-    
-    .cart_container{
-        width:  var(--mw);
+
+    .cart_container {
+        width: var(--mw);
         height: auto;
         margin: 1.6rem;
         padding: 1.8rem;
@@ -54,13 +56,13 @@
         position: fixed;
         top: 0;
         left: 0;
-        
+
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        
-        .cart_grp_one{
+
+        .cart_grp_one {
             width: 100%;
             // margin: 1.6rem;
             // padding: 1.6rem 1rem;
@@ -70,94 +72,98 @@
             align-items: baseline;
         }
 
-        .cart_grp_two{
+        .cart_grp_two {
             margin: 0.7rem;
             width: 100%;
             display: flex;
             flex-direction: row;
             justify-content: center;
             align-items: center;
-            
 
-            .grp_item_image{
+
+            .grp_item_image {
                 width: 64px;
                 height: 64px;
-            
-             img{
-                max-width: 64px;
-                max-height:64px;
-                object-fit: contain;
-                border: 0;
-                border-radius: 8px;
-             }
+
+                img {
+                    max-width: 64px;
+                    max-height: 64px;
+                    object-fit: contain;
+                    border: 0;
+                    border-radius: 8px;
+                }
 
             }
 
-            .grp_item_title{
+            .grp_item_title {
                 min-width: 120px;
-                margin:1rem;
+                margin: 1rem;
                 text-transform: uppercase;
                 font-size: 14px;
                 line-height: 1.2;
 
-                p.item_price{
+                p.item_price {
                     font-size: 12px;
                     font-weight: bold;
                     color: var(--black-L);
                 }
             }
 
-            .grp_item_actions{
+            .grp_item_actions {
                 min-width: 90px;
                 height: 28px;
             }
 
 
 
-            .increment{
+            .increment {
                 min-width: 90px;
                 height: 28px;
                 // padding: 0 1rem;
                 background-color: var(--white-D);
-                
+
                 display: flex;
                 flex-direction: row;
                 justify-content: space-evenly;
-                align-items:center;
+                align-items: center;
                 color: var(--black);
 
-                .incrementer{
+                .incrementer {
                     background-color: var(--white-D);
                     color: var(--black-L);
                     width: 18px;
                     height: 16px;
-                        margin-bottom: 10px;
+                    margin-bottom: 10px;
 
                 }
-                .incrementNumber{
+
+                .incrementNumber {
                     width: 1rem;
                     color: var(--black-D);
                 }
-                    .inc_btn:hover{
-                        color: var(--orange-L);
-                        cursor: pointer;
-                    }
+
+                .inc_btn:hover {
+                    color: var(--orange-L);
+                    cursor: pointer;
+                }
 
             }
 
         }
-        .cart_grp_three{
+
+        .cart_grp_three {
             min-width: 100%;
             display: flex;
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
 
-            .uppercase{
-            // min-width: 120px;
+            .uppercase {
+                // min-width: 120px;
                 text-transform: uppercase;
             }
-            .currency{
+
+            .currency {
                 // min-width:120px;
 
             }

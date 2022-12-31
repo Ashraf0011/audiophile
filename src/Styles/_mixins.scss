@@ -67,3 +67,16 @@
     font-size: 1rem;
     font-weight: 400;
 }
+
+@mixin SHADOW($x, $y, $blur, $color) {
+  -webkit-box-shadow: $x $y $blur $color;
+     -moz-box-shadow: $x $y $blur $color;
+          box-shadow: $x $y $blur $color;
+}
+
+@mixin ROUNDED($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+          border-radius: $radius;
+}
+

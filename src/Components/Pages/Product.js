@@ -2,9 +2,11 @@ import React from 'react'
 import { useLocation } from 'react-router-dom'
 import { AppData } from '../Contexts/DataContext'
 
+
 import Buttons from '../Utils/Buttons'
 import ImageLoader from '../Utils/ImageLoader'
-// import CatagoryThumb from './CatagoryThumb';
+import CatagoryThumb from '../Utils/CatagoryThumb';
+
 
 
 const Product = () => {
@@ -44,24 +46,30 @@ const Product = () => {
     console.log("correnty loading?", loading);
     return (
         loading === true ? <h3>please wait loading</h3> :
-            (<div className='product_list' >
-                {/* <h4> {productname ? productname[0].category : loading} </h4> */}
-                <h4>{val} </h4>
-                < div className='product_collection'  >
-                    {
-                        productname.map((item) => <>
-                            <div className='product_card_container' key={item.id} id={`${item.id}`}>
-                                <ImageLoader className="product_card_image" sml={`.${item.image.mobile}`} mid={`.${item.image.tablet}`} lrg={`.${item.image.desktop}`} />
-                                {item.new ? <p className='over_line'>new product</p> : <></>}
-                                <h3 className='product_card_heading' > {item.name} </h3>
-                                <p className='product_card_description'>{item.description}</p>
-                                <Buttons button_type="filled_btn" name={"see product"} where={`/${item.category}/${item.slug}`} />
-                            </div>
-                        </>
-                        )
-                    }
-                </div >
-            </div>)
+            (
+                <>
+                    <div className='product_list' >
+                        {/* <h4> {productname ? productname[0].category : loading} </h4> */}
+                        <h4>{val} </h4>
+                        < div className='product_collection'  >
+                            {
+                                productname.map((item) => <>
+                                    <div className='product_card_container' key={item.id} id={`${item.id}`}>
+                                        <ImageLoader className="product_card_image" sml={`.${item.image.mobile}`} mid={`.${item.image.tablet}`} lrg={`.${item.image.desktop}`} />
+                                        {item.new ? <p className='over_line'>new product</p> : <></>}
+                                        <h3 className='product_card_heading' > {item.name} </h3>
+                                        <p className='product_card_description'>{item.description}</p>
+                                        <Buttons button_type="filled_btn" name={"see product"} where={`/${item.category}/${item.slug}`} />
+                                    </div>
+                                </>
+                                )
+                            }
+                        </div >
+                    </div>
+
+                    <CatagoryThumb />
+                </>
+            )
     )
 
 }

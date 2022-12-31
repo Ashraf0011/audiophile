@@ -1,10 +1,10 @@
-import { Route, Routes } from "react-router-dom";
+import { Outlet, Route, Routes } from "react-router-dom";
 import Product from "./Components/Pages/Product";
 import ProductDetails from './Components/Pages/ProductDetails';
 import NavBar from "./Components/Utils/NavBar";
 import Footer from "./Components/Utils/Footer";
 import BestGears from './Components/Utils/BestGears';
-import CatagoryThumb from './Components/Utils/CatagoryThumb';
+
 import { useEffect, useState } from "react";
 import Home from "./Components/Pages/Home";
 import { AppData } from "./Components/Contexts/DataContext";
@@ -14,13 +14,16 @@ import Checkout from "./Components/Pages/Checkout";
 
 function App() {
 
-  let [showcart, setShowcart] = useState(false)
-
   let { state } = AppData();
+  let [showcart, setShowcart] = useState(false)
   let { cart, loading } = state;
-  console.log("app data context============> cart", cart);
-  console.log("app data loading============> ", loading);
+  console.log("appjs LOADING value", loading);
+
+
+
+  // console.log("app data context============> cart", cart);
   let [width, setWidth] = useState(window.innerWidth);
+
   const resized = () => {
     window.addEventListener("resize", () => {
       setWidth(window.innerWidth)
@@ -33,18 +36,21 @@ function App() {
   return (
 
 
-    loading ? <h2> DataLoading </h2> :
+    loading === true ? <h2> DataLoading </h2> :
       <div>
+        <ScrollToTop />
         <NavBar width={width} setShowcart={setShowcart} />
         <div className="App">
-          <ScrollToTop />
           {
             showcart && cart.length !== 0 ? <Cart setShowcart={setShowcart} /> : <></>
           }
+
           <Routes>
             <Route path="/" index element={<Home />} />
+
             <Route path="headphones" element={<Product />} />
             <Route path="headphones/:slug" element={<ProductDetails />} />
+
             <Route path="earphones" element={<Product />} />
             <Route path="earphones/:slug" element={<ProductDetails />} />
             <Route path="speakers" element={<Product />} />
@@ -53,8 +59,12 @@ function App() {
             {/* Outlate imports child comp inside parent if child route is inside <Route></Route>*/}
             <Route path="checkout" element={<Checkout />} />
           </Routes>
-          <CatagoryThumb />
+
+          <Outlet />
           <BestGears />
+
+
+
           <Footer />
         </div>
       </div>

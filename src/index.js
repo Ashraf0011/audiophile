@@ -13,11 +13,11 @@ console.log("index called");
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <ContextWrapper>
+    <ContextWrapper>
+      <BrowserRouter>
         <App />
-      </ContextWrapper>
-    </BrowserRouter>
+      </BrowserRouter>
+    </ContextWrapper>
   </React.StrictMode>
 );
 

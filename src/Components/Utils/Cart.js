@@ -2,8 +2,6 @@ import React from 'react'
 import { AppData } from '../Contexts/DataContext'
 import Buttons from './Buttons';
 import { currecny } from './Currecny';
-// import { HiTrash } from 'react-icons/hi2'
-import ImageLoader from './ImageLoader';
 
 
 const Cart = ({ setShowcart }) => {

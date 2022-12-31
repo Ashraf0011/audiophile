@@ -1,0 +1,97 @@
+.selected_item {
+      width: 100%;
+      height: auto;
+      padding: 1.6rem;
+
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      text-align: left;
+
+      .dtl_grp_one {
+            width: 21.8rem;
+            height: 21.8rem;
+            margin: 1rem;
+      }
+
+      .dtl_grp_two {
+            width: 21.8rem;
+            height: auto;
+            margin: 1.6rem;
+
+            .elm {
+                  margin: 2rem 0;
+            }
+
+            .grp_two_price {
+                  font-size: 1.2rem;
+                  font-weight: 600;
+            }
+
+
+      }
+
+      .dtl_grp_three {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+      }
+
+      .dtl_grp_four {
+            .elm {
+                  margin: 2rem 0;
+            }
+
+            p {
+                  color: var(--black-L);
+            }
+      }
+
+      .dtl_grp_five {
+            width: 100%;
+            margin: 1.6rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+
+            .icluded_items {
+                  :nth-child(1) {
+                        color: var(--orange-D);
+                  }
+
+                  :nth-child(2) {
+                        color: var(--black-L);
+                  }
+            }
+      }
+
+      .dtl_grp_six {
+            width: 100%;
+            margin: 1.6rem;
+      }
+
+      .dtl_grp_seven {
+            width: 100%;
+            margin: 1.6rem;
+
+            .others {
+                  margin: 3.8rem 0;
+
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  align-items: center;
+
+                  @for $i from 1 through 2 {
+                        :nth-child(#{$i}) {
+                              margin: 1.6rem 0;
+                        }
+                  }
+            }
+      }
+}

@@ -1,0 +1,120 @@
+.top_banner {
+      width: 100%;
+
+      #top_bannerImg img {
+            border: 0;
+            border-radius: 0;
+      }
+
+      .info {
+            width: 22rem;
+            margin: 1rem;
+            position: absolute;
+            top: 0;
+
+
+            .new_info {
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  align-items: center;
+                  text-align: center;
+
+                  @for $i from 1 through 3 {
+                        :nth-child(#{$i}) {
+                              margin: 1rem 0;
+                        }
+                  }
+
+                  & p.over_line {
+                        @include Overline;
+                        color: var(--black-L);
+                  }
+
+                  h3 {
+                        color: var(--white);
+                  }
+
+                  p.desc {
+                        color: var(--white-D);
+                  }
+
+            }
+
+
+      }
+}
+
+.circuler_elm {
+      position: relative;
+      width: 22rem;
+      height: auto;
+      margin: 1.6rem;
+      border: 0;
+      border-radius: 8px;
+      background-color: var(--orange-D);
+
+
+      svg g {
+
+            width: 100%;
+            height: 100%;
+            scale: .6;
+
+
+      }
+
+
+      .circle_banner {
+            position: absolute;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 2.5rem 2rem;
+
+
+            .circle_image {
+                  width: 11rem;
+                  height: 13rem;
+
+                  img {
+                        width: 100%;
+                        height: 100%;
+                  }
+
+            }
+
+            .new_info {
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  align-items: center;
+                  text-align: center;
+
+                  @for $i from 1 through 3 {
+                        :nth-child(#{$i}) {
+                              margin: 1rem 0;
+                        }
+                  }
+
+                  & p.over_line {
+                        @include Overline;
+                        color: var(--black-L);
+                  }
+
+                  h2 {
+                        color: var(--white);
+                  }
+
+                  p.desc {
+                        color: var(--white-D);
+                  }
+
+            }
+
+
+
+
+      }
+}

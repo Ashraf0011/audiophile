@@ -81,6 +81,7 @@ html {
 
 .App {
     transform: translateY(0);
+    margin: auto;
 }
 
 a {
@@ -98,9 +99,9 @@ button {
     background-color: inherit;
 
     &.bordered_btn {
-        background-color: var(--white);
+        background-color: inherit;
         color: var(--black-D);
-        border: 2px solid var(--black-D);
+        border: 1px solid var(--black-D);
 
         &:hover {
             background-color: var(--black-D);

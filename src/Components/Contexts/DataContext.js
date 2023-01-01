@@ -1,6 +1,6 @@
 
 import axios from "axios";
-import React, { createContext, useContext, useEffect, useReducer } from "react";
+import React, { createContext, useContext, useEffect, useReducer, useState } from "react";
 
 
 const AppContext = createContext();
@@ -9,12 +9,15 @@ export const AppData = () => useContext(AppContext);
 export const ContextWrapper = ({ children }) => {
     console.log("context-----------------------------------");
 
+    let [loading, setLoading] = useState(true);
+
+
     let initialState = {
         data: [],
         earphones: [],
         headphones: [],
         speakers: [],
-        loading: true,
+        loading: false,
         cart: [],
         total_quantity: 0,
         grand_total: 0
@@ -167,7 +170,14 @@ export const ContextWrapper = ({ children }) => {
 
     let locSt = localStorage.getItem("A_E_W_S")
     let [state, dispatch] = useReducer(reducer, initialState, () => {
-        return locSt ? JSON.parse(locSt) : initialState
+        if (locSt) {
+            setLoading(false);
+            return JSON.parse(locSt)
+        } else {
+            return initialState
+        }
+
+        // return locSt ? JSON.parse(locSt) : initialState
     });
 
 
@@ -213,11 +223,12 @@ export const ContextWrapper = ({ children }) => {
         const getData = () => {
             console.log("context------------------------------------------ called");
             dispatch({ type: "LOADING", payload: true })
+            setLoading(true)
             axios.get(url).then(
                 (response) => {
                     console.log("allData:::", response.data);
 
-
+                    setLoading(false)
                     dispatch({ type: "SETDATA", payload: response.data });
                     dispatch({ type: "FIND_CATEGORY", payload: response.data });
                     if (response.status === 200) {
@@ -237,10 +248,12 @@ export const ContextWrapper = ({ children }) => {
         dispatch({ type: "GRAND_TOTAL", payload: state.cart })
     }, [state.cart])
 
-
+    useEffect(() => {
+        localStorage.setItem("A_E_W_S", JSON.stringify(state))
+    }, [state])
 
     return (
-        <AppContext.Provider value={{ state, addtocart, increase, decrease, remove, clearcart, }}>
+        <AppContext.Provider value={{ state, addtocart, increase, decrease, remove, clearcart, loading }}>
             {children}
         </AppContext.Provider>
     )

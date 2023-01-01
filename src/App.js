@@ -5,7 +5,7 @@ import NavBar from "./Components/Utils/NavBar";
 import Footer from "./Components/Utils/Footer";
 import BestGears from './Components/Utils/BestGears';
 
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import Home from "./Components/Pages/Home";
 import { AppData } from "./Components/Contexts/DataContext";
 import ScrollToTop from "./Components/Utils/ScrollToTop";
@@ -14,9 +14,9 @@ import Checkout from "./Components/Pages/Checkout";
 
 function App() {
 
-  let { state } = AppData();
+  let { state, loading } = AppData();
   let [showcart, setShowcart] = useState(false)
-  let { cart, loading } = state;
+  let { cart } = state;
   console.log("appjs LOADING value", loading);
 
 
@@ -72,4 +72,4 @@ function App() {
   );
 }
 
-export default App;
+export default memo(App);

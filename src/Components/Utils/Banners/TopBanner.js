@@ -1,11 +1,11 @@
 
-import { AppData } from '../Contexts/DataContext';
-import ImageLoader from './ImageLoader';
-import Buttons from './Buttons';
+import { AppData } from '../../Contexts/DataContext';
+import ImageLoader from '../ImageLoader';
+import Buttons from '../Buttons';
 import React from 'react';
 export const TopBanner = () => {
-      let { state } = AppData();
-      let { data, loading } = state
+      let { state, loading } = AppData();
+      let { data } = state
       console.log("state________________", state);
 
       let product = data.filter((item) => item.slug === "xx99-mark-two-headphones" ? item : null)[0]

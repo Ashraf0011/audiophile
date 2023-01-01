@@ -10,8 +10,8 @@ import CatagoryThumb from '../Utils/CatagoryThumb';
 
 
 const Product = () => {
-    let { state } = AppData();
-    let { loading, headphones, earphones, speakers } = state;
+    let { state, loading } = AppData();
+    let { headphones, earphones, speakers } = state;
     console.log("correnty loading?", loading);
     const location = useLocation()
     let path = location.pathname

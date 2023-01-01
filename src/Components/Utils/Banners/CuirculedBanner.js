@@ -1,13 +1,13 @@
 import React from "react";
-import { AppData } from '../Contexts/DataContext';
-import ImageLoader from './ImageLoader';
-import SVG from './SVG';
-import Buttons from './Buttons';
+import { AppData } from '../../Contexts/DataContext';
+import ImageLoader from '../ImageLoader';
+import SVG from '../SVG';
+import Buttons from '../Buttons';
 
 export const CuirculedBanner = () => {
 
-      let { state } = AppData();
-      let { data, loading } = state
+      let { state, loading } = AppData();
+      let { data } = state
 
 
       let product = data.filter((item) => item.slug === "zx9-speaker" ? item : null)[0]

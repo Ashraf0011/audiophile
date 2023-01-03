@@ -1,55 +1,140 @@
-.footer_container{
+.footer_container {
     width: 100%;
     height: auto;
     padding: 24px;
     background-color: var(--black-D);
     color: var(--white-L);
-    text-align: center;
+    // text-align: center;
     display: flex;
-    // small screen
+    // alwats column
     flex-direction: column;
+
+
     justify-content: center;
     align-items: center;
 
-    &::before{
+
+
+    &::before {
         content: "";
         background-color: var(--orange-D);
         width: 100px;
         height: 4px;
-        position:relative ;
+        position: relative;
         transform: translate3d(0px, -24px, 0px);
-        
+
     }
 
-    .footer_links{
+    .footer_links {
         display: flex;
+        // always column
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        
-        .footer_buttons{
+
+        .footer_buttons {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+
+
+
+            @include MINI_MOBILE {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+
+            }
+
+            @include MOBILE {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+
+            }
+
+            @include TABLET {
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+
+                a {
+                    margin: 0 2.26rem 0 0;
+                }
+
+            }
+
+            @include DESKTOP {
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+
+                a {
+                    margin: 0 2.26rem 0 0;
+                }
+            }
         }
-    }
-    .footer_details{
-        // opacity: 0.5;
-    }
-    .icons{
-        
-        .icon_each{
-            width: 24px;
-            height: 24px;
-            margin:48px 16px;
+
+
+
+        @include MOBILE {
+            align-items: center;
         }
-        
-        svg:hover{
-            fill: var(--orange-D);
+
+        @include TABLET {
+            align-items: flex-start;
+        }
+
+        @include DESKTOP {
+            align-items: flex-start;
         }
     }
 
+
+    .footer_details_bottoms {
+        p {
+            margin: 1.6rem 0;
+        }
+
+        .icon_each {
+            width: 24px;
+            height: 24px;
+            margin: 48px 16px;
+        }
+
+        svg:hover {
+            fill: var(--orange-D);
+        }
+
+        @include DESKTOP {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+        }
+
+
+    }
+
+    @include TABLET {
+
+        align-items: flex-start;
+        padding: 4rem 2.6rem;
+    }
+
+
+    @include DESKTOP {
+        align-items: flex-start;
+        padding: 5rem 11rem;
+
+        .comm_width {
+            width: 36rem;
+        }
+    }
 
 
 }

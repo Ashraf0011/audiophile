@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap');
 @import "mixins.scss";
+@import "sizes.scss";
 @import "nav.scss";
 @import "top_banner";
 @import "productCollection";
@@ -91,8 +92,8 @@ a {
 
 button {
 
-    width: 160px !important;
-    height: 48px !important;
+    width: 160px;
+    height: 48px;
     font-size: 1rem;
     text-transform: uppercase;
 
@@ -131,6 +132,8 @@ button {
     }
 
     &.nav_btn {
+        width: auto;
+        //  width
         font-size: 14px;
         font-weight: 700;
         letter-spacing: 2px;

@@ -11,26 +11,26 @@ const Footer = () => {
             <div className='footer_links'>
                 <Logo />
                 <div className='footer_buttons'>
-                    <Buttons className="nav_btn" name={"Home"} button_type={"nav_btn"} />
-                    <Buttons className="nav_btn" name={"Headphones"} button_type={"nav_btn"} />
-                    <Buttons className="nav_btn" name={"Speakers"} button_type={"nav_btn"} />
-                    <Buttons className="nav_btn" name={"Earphones"} button_type={"nav_btn"} />
+                    <Buttons name={"Home"} button_type={"nav_btn"} where={"/"} />
+                    <Buttons name={"Headphones"} button_type={"nav_btn"} where={"/headphones"} />
+                    <Buttons name={"Speakers"} button_type={"nav_btn"} where={"/speakers"} />
+                    <Buttons name={"Earphones"} button_type={"nav_btn"} where={"/earphones"} />
                 </div>
             </div>
-            <div className='footer_details'>
+            <div className='footer_details comm_width'>
                 <p className='footer_inner_text'>
                     Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers and sound specialists who are devoted to helping you get the most out of personal audio. Come and visit our demo facility - we’re open 7 days a week.
                 </p>
-                <br />
-                <p>Copyright 2021. All Rights Reserved</p>
-
             </div>
-            <div className='icons'>
-                <IconContext.Provider value={{ style: { className: "footer_icon_each" } }} >
-                    <GrFacebook className='icon_each' />
-                    <GrTwitter className='icon_each' />
-                    <GrInstagram className='icon_each' />
-                </IconContext.Provider>
+            <div className='footer_details_bottoms'>
+                <p>Copyright 2021. All Rights Reserved</p>
+                <div>
+                    <IconContext.Provider value={{ style: { className: "footer_icon_each" } }} >
+                        <GrFacebook className='icon_each' />
+                        <GrTwitter className='icon_each' />
+                        <GrInstagram className='icon_each' />
+                    </IconContext.Provider>
+                </div>
             </div>
 
         </div >

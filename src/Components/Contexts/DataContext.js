@@ -121,7 +121,7 @@ export const ContextWrapper = ({ children }) => {
             case "GRAND_TOTAL": {
                 // console.log("length", state.cart.length);                    
                 let { cart, grand_total } = state
-                grand_total = cart.reduce((a, i) => a + i.item.price * i.quantity, 0);
+                grand_total = cart.reduce((a, i) => a + (i.item.price * i.quantity) + 50, 0);
                 console.log("item price", grand_total);
                 return { ...state, grand_total }
             }
@@ -196,6 +196,7 @@ export const ContextWrapper = ({ children }) => {
     const clearcart = () => { dispatch({ type: "CART_CLEAR" }) }
 
 
+    // const url = "http://localhost:5555/api/allproducts";
     // const url = "http://10.0.0.6:5555/api/allproducts";
     const url = "https://audio-server-amber.vercel.app/api/allproducts"
 

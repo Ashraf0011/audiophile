@@ -26,7 +26,7 @@ export const TopBanner = () => {
                         <div className='info'>
                               <div className='new_info'>
                                     {product.new ? <p className='over_line'>New product</p> : <></>}
-                                    <h3>{product.name}</h3>
+                                    <h1>{product.name}</h1>
                                     <p className='desc'>Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.</p>
                                     <Buttons where={`${product.category}/${product.slug}`} name={"see prdouct"} button_type={"filled_btn"} />
                               </div>

@@ -19,14 +19,15 @@ realistic projects.
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
 
-**Note: Delete this note and update the table of contents based on what sections
-you keep.**
-
 ## Overview
+
+Following project is a Fullstact project. It was obtained from Frontend Masters.
+However it was a design challange, I have integrated MongoDB, in order to
+practise data-base related functionality.
 
 ### The challenge
 
-Users should be able to:
+Users can perform folowing actions:
 
 - View the optimal layout for the app depending on their device's screen size
 - See hover states for all interactive elements on the page
@@ -159,5 +160,7 @@ else's solution. This is the perfect place to give them some credit.
 **Note: Delete this note and edit this section's content as necessary. If you
 completed this challenge by yourself, feel free to delete this section
 entirely.**
+
 # Audiophile-Website
+
 # Audiophile-Website

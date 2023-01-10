@@ -12,7 +12,7 @@
 
     justify-content: center;
     align-items: center;
-
+    transition: all 0.3s;
 
 
     &::before {
@@ -22,6 +22,14 @@
         height: 4px;
         position: relative;
         transform: translate3d(0px, -24px, 0px);
+
+        @include TABLET {
+            transform: translate3d(0px, -4rem, 0px);
+        }
+
+        @include DESKTOP {
+            transform: translate3d(0px, -5rem, 0px);
+        }
 
     }
 
@@ -37,29 +45,13 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            text-align: center;
 
-
-
-            @include MINI_MOBILE {
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-
-
-            }
-
-            @include MOBILE {
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-
-
-            }
 
             @include TABLET {
                 flex-direction: row;
                 justify-content: flex-start;
-                align-items: center;
+
 
                 a {
                     margin: 0 2.26rem 0 0;
@@ -95,6 +87,11 @@
 
 
     .footer_details_bottoms {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
         p {
             margin: 1.6rem 0;
         }

@@ -50,16 +50,22 @@ const Product = () => {
                 <>
                     <div className='product_list' >
                         {/* <h4> {productname ? productname[0].category : loading} </h4> */}
-                        <h4>{val} </h4>
+                        <div className='prod_title'>
+                            <h2>{val} </h2>
+                        </div>
                         < div className='product_collection'  >
                             {
                                 productname.map((item) => <>
                                     <div className='product_card_container' key={item.id} id={`${item.id}`}>
-                                        <ImageLoader className="product_card_image" sml={`.${item.image.mobile}`} mid={`.${item.image.tablet}`} lrg={`.${item.image.desktop}`} />
-                                        {item.new ? <p className='over_line'>new product</p> : <></>}
-                                        <h3 className='product_card_heading' > {item.name} </h3>
-                                        <p className='product_card_description'>{item.description}</p>
-                                        <Buttons button_type="filled_btn" name={"see product"} where={`/${item.category}/${item.slug}`} />
+                                        <div className='detImg'>
+                                            <ImageLoader className="product_card_image" sml={`.${item.categoryImage.mobile}`} mid={`.${item.categoryImage.tablet}`} lrg={`.${item.categoryImage.desktop}`} />
+                                        </div>
+                                        <div className='detInfo'>
+                                            {item.new ? <p className='over_line'>new product</p> : <></>}
+                                            <h2 className='product_card_heading' > {item.name} </h2>
+                                            <p className='product_card_description'>{item.description}</p>
+                                            <Buttons button_type="filled_btn" name={"see product"} where={`/${item.category}/${item.slug}`} />
+                                        </div>
                                     </div>
                                 </>
                                 )

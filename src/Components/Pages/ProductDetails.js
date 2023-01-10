@@ -74,60 +74,73 @@ const ProductDetails = () => {
 
       return (
             <>
+                  <Buttons button_type="reg_btn" where={`../${category}/`} name="Go Back" />
                   <div className='selected_item' key={selected_Item.id}>
 
-                        <ImageLoader className="dtl_grp_one" sml={`.${selected_Item.image.mobile}`} mid={`.${selected_Item.image.tablet}`} lrg={`.${selected_Item.image.desktop}`} alt={`${selected_Item.name}`} />
-
-                        <div className="dtl_grp_two">
-                              {selected_Item.new ? <h4 className='over_line elm'>new product </h4> : <></>}
-                              <h2 className='elm'>{selected_Item.name}</h2>
-                              <p className='description elm'>{selected_Item.description}</p>
-                              <p className='elm grp_two_price'> {currecny(selected_Item.price)}</p>
-                        </div>
-
-                        <div className="dtl_grp_three">
-                              <div className='increment'>
-                                    <span className='incrementer inc_btn' onClick={() => handDEC()} > - </span>
-                                    <span className='incrementer'>{quantity}</span>
-                                    <span className='incrementer inc_btn' onClick={() => handINC()}> + </span>
+                        <div className='dtl_top_grp'>
+                              <div className="dtl_grp_one">
+                                    <ImageLoader sml={`.${selected_Item.image.mobile}`} mid={`.${selected_Item.image.tablet}`} lrg={`.${selected_Item.image.desktop}`} alt={`${selected_Item.name}`} />
                               </div>
-                              <Buttons className="filled_btn" name={"Add to cart"} button_type={"filled_btn"} onClick={() => addtocart(selected_Item, quantity)} />
+                              <div className="dtl_grp_two">
+                                    {selected_Item.new ? <h4 className='over_line elm'>new product </h4> : <></>}
+                                    <h2 className='elm'>{selected_Item.name}</h2>
+                                    <p className='description elm'>{selected_Item.description}</p>
+                                    <p className='elm grp_two_price'> {currecny(selected_Item.price)}</p>
+                                    <div className="dtl_grp_three">
+                                          <div className='increment'>
+                                                <span className='incrementer inc_btn' onClick={() => handDEC()} > - </span>
+                                                <span className='incrementer'>{quantity}</span>
+                                                <span className='incrementer inc_btn' onClick={() => handINC()}> + </span>
+                                          </div>
+                                          <Buttons className="filled_btn" name={"Add to cart"} button_type={"filled_btn"} onClick={() => addtocart(selected_Item, quantity)} />
+                                    </div>
+
+                              </div>
                         </div>
 
-                        <div className="dtl_grp_four">
-                              <h4 className='elm'>Features</h4>
-                              <p className='selected_item_features elm'> {selected_Item.features} </p>
-                        </div>
 
-                        <div className="dtl_grp_five">
-                              <h4 className='elm'>In the box</h4>
-                              {
-                                    selected_Item.includes.map((included, index) =>
-                                          <p className='icluded_items elm' key={index}>
-                                                <span>{included.quantity}x </span> &nbsp; &nbsp; &nbsp;
-                                                <span>{included.item}</span>
-                                          </p>
-                                    )
-                              }
+                        <div className='four_five'>
+                              <div className="dtl_grp_four">
+                                    <h4 className='elm'>Features</h4>
+                                    <p className='selected_item_features elm'> {selected_Item.features} </p>
+                              </div>
+
+                              <div className="dtl_grp_five">
+                                    <div>
+                                          <h4 className='elm'>In the box</h4>
+                                    </div>
+                                    <div>
+                                          {
+                                                selected_Item.includes.map((included, index) =>
+                                                      <p className='icluded_items elm' key={index}>
+                                                            <span>{included.quantity}x </span> &nbsp; &nbsp; &nbsp;
+                                                            <span>{included.item}</span>
+                                                      </p>
+                                                )
+                                          }
+                                    </div>
+                              </div>
                         </div>
 
                         <div className='dtl_grp_six selected_item_gallery'>
                               {
                                     Object.entries(selected_Item.gallery).map(([key, value]) => {
-                                          return (<div key={key}>
-                                                <ImageLoader sml={`.${value.mobile}`} mid={`.${value.tablet}`} lrg={`.${value.desktop}`} alt={value} />
-                                          </div>)
+                                          return (
+                                                <div className={`gallery-${key}`} key={key}>
+                                                      <ImageLoader sml={`.${value.mobile}`} mid={`.${value.tablet}`} lrg={`.${value.desktop}`} alt={value} />
+                                                </div>
+                                          )
                                     })
                               }
                         </div>
 
+                        <h3 className='grp_seven'>You may also like</h3>
                         <div className="dtl_grp_seven">
-                              <h3>You may also like</h3>
                               {
                                     selected_Item.others.map((item, index) =>
                                           <div key={item.name + index} className='others'>
                                                 <ImageLoader sml={`.${item.image.mobile}`} mid={`.${item.image.tablet}`} lrg={`.${item.image.desktop}`} />
-                                                <h4>{item.name}</h4>
+                                                <h5>{item.name}</h5>
                                                 <Buttons where={`/${findProduct(item.slug, data).category}/${item.slug}`} button_type={"filled_btn"} name={"see product"} />
                                           </div>
                                     )

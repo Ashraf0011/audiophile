@@ -16,7 +16,7 @@ const ThiredBanner = () => {
                               </div>
                               <div className='new_info'>
                                     {product.new ? <p className='over_line'>New product</p> : <></>}
-                                    <h2>{product.name}</h2>
+                                    <h4>{product.name}</h4>
                                     <Buttons where={`${product.category}/${product.slug}`} name={"see prdouct"} button_type={"bordered_btn"} />
                               </div>
                         </div>

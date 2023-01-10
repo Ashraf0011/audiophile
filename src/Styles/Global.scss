@@ -20,8 +20,7 @@
     --white-L: hsla(0, 0%, 95%, 1);
     --white: hsla(0, 0%, 100%, 1);
 
-    --mw: 21.9rem;
-    --tw: 51.3rem;
+    
 
 
     font-size: 15px;
@@ -83,6 +82,7 @@ html {
 .App {
     transform: translateY(0);
     margin: auto;
+
 }
 
 a {
@@ -133,7 +133,6 @@ button {
 
     &.nav_btn {
         width: auto;
-        //  width
         font-size: 14px;
         font-weight: 700;
         letter-spacing: 2px;
@@ -181,6 +180,4 @@ button {
 .loadedImage {
     border: 0;
     border-radius: 8px;
-    width: 100%;
-
 }

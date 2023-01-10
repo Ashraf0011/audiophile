@@ -2,9 +2,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import { IconContext } from 'react-icons'
 import { GrCart, GrMenu } from 'react-icons/gr'
 
-
-
-
 import Buttons from './Buttons'
 import CatagoryThumb from './CatagoryThumb'
 import Logo from './Logo'
@@ -95,10 +92,10 @@ const NavBar = ({ width, setShowcart }) => {
                         <div ref={navBtnref} className='navMenu_desktop'>
                               <Logo />
                               <div className='navLinks'>
-                                    <Buttons className="nav_btn" name={"Home"} button_type={"nav_btn"} where={"/"} />
-                                    <Buttons className="nav_btn" name={"Headphones"} button_type={"nav_btn"} where={"/headphones"} />
-                                    <Buttons className="nav_btn" name={"Speakers"} button_type={"nav_btn"} where={"/speakers"} />
-                                    <Buttons className="nav_btn" name={"Earphones"} button_type={"nav_btn"} where={"/earphones"} />
+                                    <Buttons name={"Home"} button_type={"nav_btn"} where={"/"} />
+                                    <Buttons name={"Headphones"} button_type={"nav_btn"} where={"/headphones"} />
+                                    <Buttons name={"Speakers"} button_type={"nav_btn"} where={"/speakers"} />
+                                    <Buttons name={"Earphones"} button_type={"nav_btn"} where={"/earphones"} />
                               </div>
                               <div className='cart_icon_container'>
                                     <GrCart className='nav_icon' onClick={() => {

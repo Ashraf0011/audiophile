@@ -16,7 +16,7 @@ const FourthBanner = () => {
                         </div>
 
                         <div className='fourth_info'>
-                              <h2> {product.name} </h2>
+                              <h4> {product.name} </h4>
                               <Buttons name={"see product"} where={`${product.category}/${product.slug}`} button_type={"bordered_btn"} />
 
                         </div>
@@ -25,4 +25,4 @@ const FourthBanner = () => {
       )
 }
 
-export default  FourthBanner
+export default FourthBanner

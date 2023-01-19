@@ -43,15 +43,23 @@ Users can perform folowing actions:
 
 ### Screenshot
 
-![](./ss-1.png) &nbsp;
- ![](./ss-2.png) &nbsp; ![](./ss-3.png)
+![](./ss-1.png) &nbsp; ![](./ss-2.png) &nbsp; ![](./ss-3.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL:
+  [Add solution URL here](https://github.com/Ashraf0011/audiophile.git)
+- Live Site URL:
+  [Add live site URL here](https://fluffy-kashata-6ab478.netlify.app)
 
 ## My process
+
+I have started this project by doing a component library at the begenning. Which
+made it easier to complete rest of the work. Once Component library was done, I
+created the pages and called those components inside the page where necessary. I
+have separated data contex and Order context in order to have better access and
+thus loaded only what I needed. Not only context, I have used local storage to
+reduce network calls, if revisited the website.
 
 ### Built with
 
@@ -60,12 +68,13 @@ Users can perform folowing actions:
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above
-with your own choices**
+- ForntEnd
+  1.  [React](https://reactjs.org/) - JS library
+  2.  [SASS](https://sass-lang.com/documentation/) - For styles
+- Backend
+  1. Node.js
+  2. Express.js
+  3. MongoDB
 
 ### What I learned
 
@@ -73,77 +82,35 @@ some transition property (e.g color) did not effect react-icons. I spent quite
 sometime on it. but eventually found that, if i use "fill" instead of color. it
 works. just a quick reminder for me:--->
 
-transition: <property> <duration> <timing-function> <delay>
+to use transition following values can be used: property duration
+timing-function delay
 
-Use this section to recap over some of your major learnings while working
-through this project. Writing these out and providing code samples of areas you
-want to highlight is a great way to reinforce your own knowledge.
-
-To see how you can add code snippets, see below:
-
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-
-```css
-.proud-of-this-css {
-  color: papayawhip;
+```CSS
+.transition{
+    transition: <property> <duration> <timing-function> <delay>
 }
 ```
 
-```js
-const proudOfThisFunc = () => {
-  console.log("🎉");
-};
-```
-
-If you want more help with writing markdown, we'd recommend checking out
-[The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with
-your own learnings.**
-
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in
-future projects. These could be concepts you're still not completely comfortable
-with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with
-your own plans for continued development.**
+Only form validation is yet to do. I was too exasted to do it right-away.
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason.
-  I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article
-  which helped me finally understand XYZ. I'd recommend it to anyone still
-  learning this concept.
+there awer few resurces I found helpful.
 
-**Note: Delete this note and replace the list above with resources that helped
-you during the challenge. These could come in handy for anyone viewing your
-solution or for yourself when you look back on this project in the future.**
+- [Example resource 1](https://www.example.com) - i'll add them later here. I
+  really liked this pattern and will use it going forward.
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
+- Website - [Md Ashraful Islam](https://www.ashrafs.info)
 - Frontend Mentor -
-  [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links
-you'd like to share.**
+  [@Ashraf0011](https://www.frontendmentor.io/profile/Ashraf0011)
 
 ## Acknowledgments
 
-This is where you can give a hat tip to anyone who helped you out on this
-project. Perhaps you worked in a team or got some inspiration from someone
-else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you
-completed this challenge by yourself, feel free to delete this section
-entirely.**
-
-# Audiophile-Website
+My mentor, MD didarul Isalm helped with his inspiration (since this was a big
+project for me) and exclusive knowledge at some point.
 
 # Audiophile-Website

@@ -60,11 +60,11 @@
         background-color: var(--white);
 
         @include TABLET {
-            width: 40%;
+            width: 45%;
             padding: 1.6rem;
             margin: auto;
             position: absolute;
-            top: 2.6rem;
+            top: 1.6rem;
             left: 70%;
             transform: translateX(-50%);
 
@@ -75,7 +75,7 @@
             padding: 1.6rem;
             margin: auto;
             position: absolute;
-            top: 2.6rem;
+            top: 2.1rem;
             left: 80%;
             transform: translateX(-50%);
 

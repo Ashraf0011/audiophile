@@ -6,6 +6,8 @@ import { AppData } from '../Contexts/DataContext'
 import Buttons from '../Utils/Buttons'
 import ImageLoader from '../Utils/ImageLoader'
 import CatagoryThumb from '../Utils/CatagoryThumb';
+import BestGears from '../Utils/BestGears';
+import Footer from '../Utils/Footer';
 
 
 
@@ -74,6 +76,9 @@ const Product = () => {
                     </div>
 
                     <CatagoryThumb />
+                    <BestGears />
+                    <Footer />
+
                 </>
             )
     )

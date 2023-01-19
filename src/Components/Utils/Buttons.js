@@ -31,9 +31,9 @@ const Buttons = (props) => {
             )
         case "filled_btn":
             return (
-                // style={{ width: props.width ? `${props.width}` : "160px" }}
-                <Link to={props.where}>
-                    <button className='aLink filled_btn' onClick={props.onClick}>
+                // 
+                <Link to={props.where} style={{ width: props.width ? `${props.width}` : "160px" }} >
+                    <button className='aLink filled_btn' onClick={props.onClick} style={{ width: props.width ? `${props.width}` : "160px" }} >
                         {props.name}
                     </button>
                 </Link>

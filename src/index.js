@@ -7,18 +7,21 @@ import reportWebVitals from './reportWebVitals';
 
 import { BrowserRouter } from 'react-router-dom';
 import { ContextWrapper } from './Components/Contexts/DataContext';
+import { OrderContextWrapper } from './Components/Contexts/OrderContext';
 
 
 console.log("index called");
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <ContextWrapper>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </ContextWrapper>
-  </React.StrictMode>
+    <React.StrictMode>
+        <ContextWrapper>
+            <BrowserRouter>
+                <OrderContextWrapper >
+                    <App />
+                </OrderContextWrapper>
+            </BrowserRouter>
+        </ContextWrapper>
+    </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

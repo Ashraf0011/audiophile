@@ -21,8 +21,8 @@ realistic projects.
 
 ## Overview
 
-Following project is a Fullstact project. It was obtained from Frontend Masters.
-However it was a design challange, I have integrated MongoDB, in order to
+Following project is a Fullstack project. It was obtained from Frontend Mentors.
+However it was only a design challange, I have integrated MongoDB, in order to
 practise data-base related functionality.
 
 ### The challenge
@@ -39,29 +39,12 @@ Users can perform folowing actions:
   - Shipping always adds $50 to the order
   - VAT is calculated as 20% of the product total, excluding shipping
 - See an order confirmation modal after checking out with an order summary
-- **Bonus**: Keep track of what's in the cart, even after refreshing the browser
-  (`localStorage` could be used for this if you're not building out a full-stack
-  app)
+- even after refreshing the browser cart items are tracked.
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox
-to view your project, right-click the page and select "Take a Screenshot". You
-can choose either a full-height screenshot or a cropped one based on how long
-the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to
-take the screenshot. FireShot has a free option, so you don't need to purchase
-it.
-
-Then crop/optimize/edit your image however you like, add it to your project, and
-update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot.
-If you prefer not to add a screenshot, feel free to remove this entire
-section.**
+![](./ss-1.png) &nbsp;
+ ![](./ss-2.png) &nbsp; ![](./ss-3.png)
 
 ### Links
 

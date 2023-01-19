@@ -5,6 +5,8 @@ import Buttons from '../Utils/Buttons';
 import { currecny } from '../Utils/Currecny';
 import ImageLoader from '../Utils/ImageLoader';
 import CatagoryThumb from '../Utils/CatagoryThumb';
+import BestGears from '../Utils/BestGears';
+import Footer from '../Utils/Footer';
 
 
 
@@ -156,6 +158,8 @@ const ProductDetails = () => {
                   </div>
 
                   <CatagoryThumb />
+                  <BestGears />
+                  <Footer />
             </>
       )
 }

@@ -93,7 +93,8 @@ timing-function delay
 
 ### Continued development
 
-Only form validation is yet to do. I was too exasted to do it right-away.
+Only form validation is yet to do. I was too exasted to do it right-away. I
+wanted to add react memo to this project.
 
 ### Useful resources
 

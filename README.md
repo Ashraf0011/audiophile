@@ -48,9 +48,9 @@ Users can perform folowing actions:
 ### Links
 
 - Solution URL:
-  [Add solution URL here](https://github.com/Ashraf0011/audiophile.git)
+  (https://github.com/Ashraf0011/audiophile.git)
 - Live Site URL:
-  [Add live site URL here](https://fluffy-kashata-6ab478.netlify.app)
+  (https://fluffy-kashata-6ab478.netlify.app)
 
 ## My process
 
